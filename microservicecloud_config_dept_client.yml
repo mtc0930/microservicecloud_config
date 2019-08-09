@@ -1,0 +1,60 @@
+﻿spring:
+ profiles:
+   action:
+   - dev
+---
+server:
+ port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    url: jdbc:mysql://localhost/clouddb01?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+
+info:
+  app.name: mtc-microservicecloud
+  company.name: www.mtc.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+---
+server:
+ port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    url: jdbc:mysql://localhost/clouddb02?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+
+info:
+  app.name: mtc-microservicecloud
+  company.name: www.mtc.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
